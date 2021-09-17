@@ -19,11 +19,14 @@ from . import views # import the views functions from current directory
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns # lets us append to utlpatterns to get static files
 from django.conf.urls.static import static
 from django.conf import settings
+from articles import views as article_views
+
+app_name = 'main'
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('about/', views.about, name='about'), # the path function takes two parameters
-    path('', views.homepage, name='homepage'), # 1. URL-pattern and 2. function from views
+    path('', article_views.article_list, name='homepage'), # 1. URL-pattern and 2. function from views
     path('articles/', include('articles.urls')),
     path('accounts/', include('accounts.urls'))
 ]
