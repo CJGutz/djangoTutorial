@@ -6,6 +6,9 @@
 <form class="site-form" action="{% url 'accounts:login' %}" method="POST">
     {% csrf_token %} <!-- token showing form comes from this website -->
     {{ form }}
+    {% if request.GET.next %}
+        <input type="hidden" name="next", value="{{ request.GET.next }}">
+    {% endif %}
     <input type="submit" value="Log in" name="submit">
 </form>
 
