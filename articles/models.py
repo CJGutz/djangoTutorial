@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -9,7 +10,7 @@ class Article(models.Model): # inherits from models
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     thumbnail = models.ImageField(default='default.png', blank = True)
-    # author = models.CharField(max_length=30)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     # Everytime you add to a model:
     #   python manage.py makemigrations
